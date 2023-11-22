@@ -1,0 +1,611 @@
+// variables & functions
+@import 'functions';
+@import 'variables';
+
+// base & layout
+@import 'base';
+
+// colors
+
+// components (button, card, navbar etc)
+
+// utilities (margin, padding, opacity, etc)
+
+#root {
+  @include display-flex(center, flex-start);
+  flex-direction: column;
+
+  min-height: 100vh;
+  background-color: #efefef;
+  padding-top: 80px;
+}
+
+.navbar {
+  @include display-flex(center, space-between);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  color: #fff;
+  font-size: 1.4rem;
+  background-color: $primary-color;
+
+  padding: 0 10%;
+  height: 80px;
+
+  > .nav-link {
+    @include display-flex;
+    gap: 40px;
+  }
+}
+
+/* ------------------------------------------- Profile ------------------------------------------ */
+
+.profile {
+  @include display-flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 20px 10% 40px;
+  height: 100%;
+
+  > .active-posts {
+    @include display-flex(stretch, start);
+    flex-wrap: wrap;
+    gap: 10px;
+
+    > .user-post {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fff;
+      padding: 15px 40px;
+
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+      cursor: pointer;
+
+      &:hover {
+        transform: translate(0, -2%);
+      }
+
+      > h2 {
+        margin-bottom: 10px;
+      }
+
+      > span {
+        color: #6f6f6f;
+      }
+    }
+  }
+
+  > .inactive-posts {
+    @include display-flex(stretch, center);
+    flex-wrap: wrap;
+    gap: 10px;
+
+    > .user-post {
+      flex: 1;
+      background-color: #a5a5a5;
+      padding: 15px 40px;
+
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.847);
+
+      > h2 {
+        margin-bottom: 10px;
+      }
+
+      > span {
+        color: #6f6f6f;
+      }
+    }
+  }
+
+  > .user-messages {
+    @include display-flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 100%;
+    > .message {
+      width: 100%;
+      padding: 15px 40px;
+
+      background-color: #fff;
+
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+      cursor: pointer;
+    }
+  }
+}
+
+/* ------------------------------------------- Profile ------------------------------------------ */
+
+/* ------------------------------------------ Register ------------------------------------------ */
+
+.register {
+  @include display-flex;
+
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  margin-top: 160px;
+  height: 500px;
+  overflow: hidden;
+
+  > img {
+    height: 100%;
+    width: 500px;
+  }
+
+  > form {
+    @include display-flex(center, space-evenly);
+    flex-direction: column;
+
+    position: relative;
+
+    background-color: $primary-color;
+    color: #fff;
+
+    width: 500px;
+    height: 100%;
+
+    > span {
+      position: absolute;
+      bottom: 3%;
+
+      color: $error-color;
+    }
+
+    > fieldset {
+      @include display-flex(start, center);
+      flex-direction: column;
+      gap: 10px;
+
+      border: none;
+
+      width: 75%;
+
+      > label {
+        font-size: 1.2rem;
+        margin-left: 10px;
+      }
+
+      > input {
+        padding: 15px 20px;
+        width: 100%;
+
+        font-size: 1.2rem;
+        color: #000;
+
+        border-radius: 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    > div {
+      text-align: center;
+
+      width: 75%;
+
+      > p > a {
+        text-decoration: underline;
+      }
+
+      > button {
+        border: 1px solid #fff;
+        background-color: $primary-color;
+        border-radius: 10px;
+
+        font-size: 1.2rem;
+
+        width: 100%;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-color;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------------------ Register ------------------------------------------ */
+
+/* ------------------------------------------- Sign In ------------------------------------------ */
+
+.signin {
+  @include display-flex;
+
+  border-radius: 25px;
+  box-shadow: 0px 0px 6px 0px rgba(90, 89, 89, 0.4);
+
+  margin-top: 160px;
+  height: 500px;
+  overflow: hidden;
+
+  > form {
+    @include display-flex(center, space-evenly);
+    flex-direction: column;
+
+    position: relative;
+
+    color: $primary-color;
+
+    width: 500px;
+    height: 100%;
+
+    > fieldset {
+      @include display-flex(start, center);
+      flex-direction: column;
+      gap: 10px;
+
+      border: none;
+
+      width: 75%;
+
+      > label {
+        font-size: 1.2rem;
+        margin-left: 10px;
+      }
+
+      > input {
+        padding: 15px 20px;
+        width: 100%;
+
+        font-size: 1.2rem;
+
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0px 0px 6px 0px $primary-color;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    > span {
+      position: absolute;
+      bottom: 3%;
+
+      color: $error-color;
+    }
+
+    > div {
+      text-align: center;
+
+      width: 75%;
+
+      > p > a {
+        color: #4b4b4b;
+      }
+
+      > button {
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        border-radius: 10px;
+
+        color: #fff;
+        font-size: 1.2rem;
+
+        padding: 10px 20px;
+        margin-bottom: 10px;
+
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-color;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------------------- Sign In ------------------------------------------ */
+
+/* -------------------------------------------- Home -------------------------------------------- */
+
+.home {
+  height: 100%;
+  width: 100%;
+  padding: 20px 10% 40px;
+
+  form {
+    @include display-flex;
+    gap: 5px;
+
+    margin-bottom: 20px;
+
+    > input {
+      flex: 1;
+      font-size: 1.2rem;
+      border: 2px solid #888888;
+
+      padding: 10px 20px;
+
+      &:focus {
+        outline: none;
+        border: 2px dashed $primary-color;
+      }
+    }
+
+    > a {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: $primary-color;
+
+      border: 2px solid $primary-color;
+
+      &:hover {
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+  }
+
+  .posts {
+    @include display-flex;
+    flex-direction: column;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+
+    > .post-card {
+      @include display-flex(start, space-between);
+      width: 100%;
+      padding: 15px 40px;
+
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+      > .right-side {
+        text-align: right;
+      }
+      > div {
+        > h2 {
+          margin-bottom: 10px;
+        }
+
+        > span {
+          display: block;
+          color: #6f6f6f;
+          margin-bottom: 5px;
+        }
+
+        > a {
+          display: inline-block;
+          padding: 5px 10px;
+          color: $primary-color;
+
+          border: 2px solid $primary-color;
+          border-radius: 5px;
+          margin-top: 5px;
+
+          &:hover {
+            background-color: $primary-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------------------- Home -------------------------------------------- */
+
+/* ------------------------------------------ Post Form ----------------------------------------- */
+
+.post-form {
+  @include display-flex;
+  flex-direction: column;
+  gap: 30px;
+
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
+
+  width: 600px;
+  padding: 60px 0;
+
+  > .input-fieldset {
+    position: relative;
+
+    > label {
+      position: absolute;
+      left: 17px;
+      color: rgb(127, 127, 127);
+    }
+
+    &:focus-within {
+      > label {
+        color: black;
+        transform: translate(-5px, -25px);
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+        font-size: 1rem;
+        padding: 5px 10px;
+      }
+    }
+
+    > label.focus {
+      color: black;
+      transform: translate(-5px, -25px);
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+      font-size: 1rem;
+      padding: 5px 10px;
+    }
+
+    > input {
+      border-radius: 10px;
+      border: 1px solid #747474;
+
+      width: 100%;
+      padding: 15px 15px;
+
+      font-size: 1.2rem;
+    }
+  }
+
+  > fieldset {
+    @include display-flex(center, flex-start);
+    border: none;
+
+    width: 75%;
+
+    > label {
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    > .check-box {
+      margin: 0 15px;
+    }
+  }
+
+  > button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid $primary-color;
+
+    color: $primary-color;
+    font-size: 1.2rem;
+
+    padding: 10px 15px;
+    width: 75%;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+}
+
+/* ------------------------------------------ Post Form ----------------------------------------- */
+
+/* ------------------------------------------ Post View ----------------------------------------- */
+
+.post-view {
+  @include display-flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 20px;
+  width: 75%;
+  > .post {
+    width: 100%;
+    padding: 15px 40px;
+
+    background-color: #fff;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+    > h2 {
+      margin-bottom: 10px;
+    }
+
+    > span {
+      color: #6f6f6f;
+    }
+
+    > div {
+      @include display-flex(center, flex-start);
+      gap: 5px;
+
+      > button {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      > .delete-btn {
+        color: #fff;
+        background-color: $error-color;
+
+        border: 2px solid $error-color;
+
+        &:hover {
+          background-color: rgb(255, 54, 54);
+          border: 2px solid rgb(255, 54, 54);
+        }
+      }
+
+      > .edit-btn {
+        color: $primary-color;
+        background-color: transparent;
+
+        border: 2px solid $primary-color;
+
+        &:hover {
+          background-color: $primary-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  > .messages-form {
+    @include display-flex;
+    width: 100%;
+
+    > fieldset {
+      @include display-flex;
+      width: 100%;
+      padding: 5px 15px;
+      border: none;
+
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+      > input {
+        flex: 1;
+
+        font-size: 1.2rem;
+        border: 2px solid #c7c7c7;
+        border-radius: 5px;
+
+        padding: 10px 20px;
+
+        &:focus {
+          border: 2px solid $primary-color;
+        }
+      }
+
+      > button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        padding: 5px 15px;
+      }
+    }
+  }
+
+  > .message {
+    width: 100%;
+    padding: 15px 40px;
+
+    background-color: #fff;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,0 +1,66 @@
+import { FormEvent, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
+import { postMessage } from '../api/fetchAPI';
+import { ViewPostContext } from '../types/types';
+
+const PostMessages = () => {
+  const { token, id, post, messagesList, userData } =
+    useOutletContext<ViewPostContext>();
+  const [message, setMessage] = useState('');
+
+  // async function handleSubmitMessage(event: FormEvent) {
+  //   event.preventDefault();
+  //   const result = await postMessage(id!, token, message);
+  //   if (result) setMessage('');
+  // }
+
+  function handleSubmitMessage(id: string, token: string, message: string) {
+    return async function (event: FormEvent) {
+      event.preventDefault();
+      const result = await postMessage(id, token, message);
+      if (result) setMessage('');
+    };
+  }
+
+  return (
+    <>
+      {post.author._id === userData._id &&
+        (messagesList.length ? (
+          <h2>Messages For You</h2>
+        ) : (
+          <h2>There Is No Message</h2>
+        ))}
+      {messagesList &&
+        messagesList.map(msg => (
+          <div key={msg._id} className='message'>
+            <h2>From: {msg.fromUser.username}</h2>
+            <p>{msg.content}</p>
+          </div>
+        ))}
+      {post.author._id !== userData._id && (
+        <form
+          className='messages-form'
+          onSubmit={handleSubmitMessage(id!, token, message)}
+        >
+          <h2>To: {post.author.username}</h2>
+          <fieldset>
+            <input
+              name='message'
+              placeholder='Send a message'
+              value={message}
+              onChange={event => setMessage(event.target.value)}
+              required
+            />
+            {message && (
+              <button>
+                <i className='fa-sharp fa-solid fa-share fa-rotate-180'></i>
+              </button>
+            )}
+          </fieldset>
+        </form>
+      )}
+    </>
+  );
+};
+
+export default PostMessages;
